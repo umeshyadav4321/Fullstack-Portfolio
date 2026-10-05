@@ -1,0 +1,130 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --bg-primary: #050811;
+    --bg-secondary: #0b1120;
+    --bg-glass: rgba(15, 23, 42, 0.65);
+    --bg-glass-hover: rgba(30, 41, 59, 0.8);
+    --border-glass: rgba(255, 255, 255, 0.1);
+    --border-glass-glow: rgba(6, 182, 212, 0.4);
+    --text-primary: #f8fafc;
+    --text-secondary: #94a3b8;
+    --accent-cyan: #06b6d4;
+    --accent-violet: #8b5cf6;
+    --accent-glow: rgba(6, 182, 212, 0.15);
+    --shadow-cyber: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  }
+
+  .light {
+    --bg-primary: #f8fafc;
+    --bg-secondary: #ffffff;
+    --bg-glass: rgba(255, 255, 255, 0.75);
+    --bg-glass-hover: rgba(241, 245, 249, 0.9);
+    --border-glass: rgba(0, 0, 0, 0.08);
+    --border-glass-glow: rgba(2, 132, 199, 0.4);
+    --text-primary: #0f172a;
+    --text-secondary: #475569;
+    --accent-cyan: #0284c7;
+    --accent-violet: #6366f1;
+    --accent-glow: rgba(2, 132, 199, 0.12);
+    --shadow-cyber: 0 10px 30px -5px rgba(0, 0, 0, 0.08);
+  }
+}
+
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: var(--font-sans), system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  overflow-x: hidden;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Glassmorphism utility classes */
+.glass-card {
+  background: var(--bg-glass);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--border-glass);
+  box-shadow: var(--shadow-cyber);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.glass-card:hover {
+  background: var(--bg-glass-hover);
+  border-color: var(--border-glass-glow);
+  box-shadow: 0 0 25px rgba(6, 182, 212, 0.2), var(--shadow-cyber);
+}
+
+.glass-nav {
+  background: var(--bg-glass);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border-glass);
+}
+
+/* Cyber Glow Text & Borders */
+.gradient-text-cyber {
+  background: linear-gradient(135deg, var(--accent-cyan) 0%, #38bdf8 40%, var(--accent-violet) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.cyber-glow-cyan {
+  box-shadow: 0 0 20px rgba(6, 182, 212, 0.35);
+}
+
+.cyber-glow-violet {
+  box-shadow: 0 0 20px rgba(139, 92, 246, 0.35);
+}
+
+.cyber-button {
+  position: relative;
+  background: linear-gradient(135deg, var(--accent-cyan), var(--accent-violet));
+  color: #ffffff;
+  font-weight: 600;
+  border-radius: 9999px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  z-index: 1;
+}
+
+.cyber-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, var(--accent-violet), var(--accent-cyan));
+  opacity: 0;
+  z-index: -1;
+  transition: opacity 0.3s ease;
+}
+
+.cyber-button:hover::before {
+  opacity: 1;
+}
+
+.cyber-button:hover {
+  box-shadow: 0 0 25px rgba(6, 182, 212, 0.5);
+  transform: translateY(-2px);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-primary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(100, 116, 139, 0.3);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-cyan);
+}
